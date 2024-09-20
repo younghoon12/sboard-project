@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>약관</title>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <script>
+        function checkAgree() {
+            var terms = document.querySelector('input[name="terms"]').checked;
+            var privacy = document.querySelector('input[name="privacy"]').checked;
+
+
+            if (!terms){
+                alert("사이트 이용약관에 동의하셔야 합니다.");
+                return false;
+            }
+
+            if (!privacy){
+                alert("개인정보 취급방침에 동의하셔야 합니다.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h3>Board System</h3>
+        </header>
+        <main id="user">
+            <section class="terms">
+                <h2 class="tit">사이트 이용약관</h2>
+                <table border="1">                    
+                    <tr>
+                        <td>
+                            <textarea name="terms" th:text="${termsDTO.terms}"></textarea>
+                            <label><input type="checkbox" name="terms">&nbsp;동의합니다.</label>
+                        </td>
+                    </tr>
+                </table>
+
+                <h2 class="tit">개인정보 취급방침</h2>
+                <table border="1">                    
+                    <tr>
+                        <td>
+                            <textarea name="privacy" th:text="${termsDTO.privacy}"></textarea>
+                            <label><input type="checkbox" name="privacy">&nbsp;동의합니다.</label>
+                        </td>
+                    </tr>
+                </table>
+                
+                <div>
+                    <a href="./login.html" class="btn btnCancel">취소</a>
+                    <a href="./register" class="btn btnNext" onclick="return checkAgree();">다음</a>
+                </div>
+
+            </section>
+        </main>
+        <footer>
+            <p>
+                <span class="copyright">Copyrightⓒ 김영훈</span>
+                <span class="version">ver.[[${appVersion}]]</span>
+            </p>
+        </footer>
+    </div>    
+</body>
+</html>
