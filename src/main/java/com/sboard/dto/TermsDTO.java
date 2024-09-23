@@ -1,6 +1,7 @@
 package com.sboard.dto;
 
 
+import com.sboard.entity.Terms;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,6 +16,14 @@ public class TermsDTO {
     private int seq;
     private String terms;
     private String privacy;
+
+    public Terms toEntity() {
+        return Terms.builder()
+                .seq(seq)
+                .terms(terms)
+                .privacy(privacy)
+                .build();
+    }
 
 
 }
